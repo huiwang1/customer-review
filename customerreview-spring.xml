@@ -19,15 +19,28 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd">
-		   
 
-	<alias alias="customerReviewService" name="defaultCustomerReviewService"/>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="locations">
+			<list>
+				<value>classpath*:main/resources/customer-review.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<alias alias="customerReviewService" name="huiCustomerReviewService"/>
 	<bean id="defaultCustomerReviewService" class="de.hybris.platform.customerreview.impl.DefaultCustomerReviewService" parent="abstractBusinessService" scope="tenant">
 		<property name="customerReviewDao" ref="customerReviewDao"/>
 	</bean>
+	<bean id="huiCustomerReviewService" class="com.hui.hdtest.customerreview.services.impl.HuiCustomerReviewService" parent="defaultCustomerReviewService" scope="tenant">
+		<property name="customerReviewDao" ref="customerReviewDao"/>
+		<property name="customerReviewBadWords" value="${bad.words}" />
+	</bean>
 
-	<alias alias="customerReviewDao" name="defaultCustomerReviewDao"/>
+	<alias alias="customerReviewDao" name="huiCustomerReviewDao"/>
 	<bean id="defaultCustomerReviewDao" class="de.hybris.platform.customerreview.dao.impl.DefaultCustomerReviewDao" parent="abstractItemDao" scope="tenant"/>
+	<bean id="huiCustomerReviewDao" class="com.hui.hdtest.customerreview.dao.impl.HuiCustomerReviewDao" parent="defaultCustomerReviewDao" scope="tenant"/>
 
 	<!-- system setup bean -->
 	<alias alias="customerReviewSystemSetup" name="defaultCustomerReviewSystemSetup"/>
