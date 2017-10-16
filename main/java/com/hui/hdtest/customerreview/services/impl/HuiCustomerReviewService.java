@@ -1,6 +1,7 @@
 package com.hui.hdtest.customerreview.services.impl;
 
 import com.hui.hdtest.customerreview.services.CustomerReviewExtendedService;
+import com.hui.hdtest.customerreview.dao.CustomerReviewExtendedDao;
 import de.hybris.platform.customerreview.impl.DefaultCustomerReviewService;
 import main.java.com.hui.hdtest.customerreview.model.Rating;
 import org.springframework.beans.factory.annotation.Required;
@@ -9,7 +10,18 @@ import org.springframework.beans.factory.annotation.Required;
  * Implementation of {@link CustomerReviewExtendedService}.
  */
 public class HuiCustomerReviewService extends DefaultCustomerReviewService implements CustomerReviewExtendedService {
+    private CustomerReviewExtendedDao customerReviewDao;
     private String customerReviewBadWords;
+
+    protected CustomerReviewExtendedDao getCustomerReviewDao() {
+        return this.customerReviewDao;
+    }
+
+    @Required
+    public void setCustomerReviewDao(CustomerReviewExtendedDao customerReviewDao) {
+        this.customerReviewDao = customerReviewDao;
+        super.setCustomerReviewDao(customerReviewDao);
+    }
 
     @Required
     public void setCustomerReviewBadWords(final String customerReviewBadWords) {
