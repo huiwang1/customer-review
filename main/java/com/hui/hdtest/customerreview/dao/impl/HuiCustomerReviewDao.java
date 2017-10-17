@@ -19,7 +19,7 @@ public class HuiCustomerReviewDao extends DefaultCustomerReviewDao implements Cu
             return 0;
         }
 
-        String query = "SELECT COUNT(*) FROM {" + GeneratedCustomerReviewConstants.TC.CUSTOMERREVIEW + "} WHERE {" + "product" + "}=?product AND {" + "rating" + "}>=?lowestRating AND {" + "rating" + "}<=?highestRating";
+        String query = "SELECT COUNT(*) FROM {" + "CustomerReview" + "} WHERE {" + "product" + "}=?product AND {" + "rating" + "}>=?lowestRating AND {" + "rating" + "}<=?highestRating";
 
         FlexibleSearchQuery fsQuery = new FlexibleSearchQuery(query);
         fsQuery.addQueryParameter("product", product);
