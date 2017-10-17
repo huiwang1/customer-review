@@ -12,6 +12,8 @@ From my preliminary investigation, I observed the main entry point is provided b
 
 ### Requirements
 
+I spent about 4 hours coding up the solution, and another 2 hours documenting and trying to unit test.
+
 [customerreview-spring.xml]: https://github.com/huiwang1/customer-review/blob/master/customerreview-spring.xml
 [HuiCustomerReviewDao]: https://github.com/huiwang1/customer-review/blob/master/main/java/com/hui/hdtest/customerreview/dao/impl/HuiCustomerReviewDao.java
 [CustomerReviewExtendedDao]: https://github.com/huiwang1/customer-review/blob/master/main/java/com/hui/hdtest/customerreview/dao/CustomerReviewExtendedDao.java
